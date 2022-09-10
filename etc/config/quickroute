@@ -1,6 +1,0 @@
-
-config default
-	option mode 'direct'
-	option fwmark '100'
-	option route_table '100'
-
