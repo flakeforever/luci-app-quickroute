@@ -27,4 +27,9 @@ dest = default_section:option(Flag, "dest_ipset_enabled", translate("IPSet Enabl
 dest = default_section:option(Value, "dest_ipset_name", translate("IPSet Name"))
 dest = default_section:option(Flag, "dest_ipset_inverted", translate("Match Inverted"))
 
+default_section = map:section(TypedSection, "default", "Others")
+default_section.anonymous = true
+dest = default_section:option(Value, "fwmark", translate("Firewall Mark"))
+dest = default_section:option(Value, "route_table", translate("Route Table"))
+
 return map
