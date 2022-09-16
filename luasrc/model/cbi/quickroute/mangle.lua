@@ -19,7 +19,7 @@ src = default_section:option(Flag, "src_ipset_enabled", translate("IPSet Enabled
 src = default_section:option(Value, "src_ipset_name", translate("IPSet Name"))
 src = default_section:option(Flag, "src_ipset_inverted", translate("Match Inverted"))
 
-default_section = map:section(TypedSection, "default", "Destination Address")
+default_section = map:section(TypedSection, "default", "Destination Address (Rule required)")
 default_section.anonymous = true
 
 dest = default_section:option(Value, "dest_ip", translate("IP Address"))
