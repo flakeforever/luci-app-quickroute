@@ -8,11 +8,12 @@ local uci = require "luci.model.uci"
 local ip = require "luci.ip"
 
 function cbi_add_interface(field)
-	for k, v in ipairs(sys.net.devices()) do
-		if v ~= "lo" then
-			field:value(v)
+	uci.cursor():foreach("network", "interface",
+    function (section)
+		if section['.name'] ~= "loopback" and section.proto ~= "static" then
+			field:value(section['.name'])
 		end
-	end
+    end)
 end
 
 map = Map("quickroute", translate("Quick Route"),
@@ -29,8 +30,8 @@ interface_list.addremove = true
 interface_list.sortable  = false
 
 interface = interface_list:option(Value, "name", translate("Interface"))
---interface.rmempty = true
---cbi_add_interface(interface)
+interface.rmempty = true
+cbi_add_interface(interface)
 
 gateway = interface_list:option(Value, "gateway", translate("Gateway (Bridging required)"))
 
