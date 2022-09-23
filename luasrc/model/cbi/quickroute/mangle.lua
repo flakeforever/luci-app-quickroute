@@ -4,8 +4,7 @@
 local sys = require "luci.sys"
 local wa = require "luci.tools.webadmin"
 
-map = Map("quickroute", translate("Quick Route"),
-	translate("A quick routing configuration tool."))
+map = Map("quickroute", "%s - %s" %{translate("Quick Route"), translate("Mangle")})
 --map.apply_on_parse = true
 --map.on_after_apply = function(self)
 --	sys.call("quickroute >/tmp/quickroute-log 2>&1 &")
@@ -27,7 +26,7 @@ dest = default_section:option(Flag, "dest_ipset_enabled", translate("IPSet Enabl
 dest = default_section:option(Value, "dest_ipset_name", translate("IPSet Name"))
 dest = default_section:option(Flag, "dest_ipset_inverted", translate("Match Inverted"))
 
-default_section = map:section(TypedSection, "default", "Others")
+default_section = map:section(TypedSection, "default", "Other Settings")
 default_section.anonymous = true
 dest = default_section:option(Value, "fwmark", translate("Firewall Mark"))
 dest = default_section:option(Value, "route_table", translate("Route Table"))
